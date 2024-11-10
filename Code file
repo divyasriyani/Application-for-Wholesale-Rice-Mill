@@ -24,3 +24,25 @@ class ConsumerRecord {
         }
     }
 }
+
+
+Creating an Apex Trigger
+How to create a new trigger :
+While still in the trailhead account, navigate to the gear icon in the top right corner.
+Click on developer console and you will be navigated to a new console window.
+Click on the File menu in the toolbar, and click on new? Trigger.
+Enter the trigger name and the object to be triggered.
+
+Syntax For creating trigger :
+	The syntax for creating trigger is :
+	Trigger [trigger name] on [object name]( Before/After event)	{
+             //Trigger Logic
+	}
+
+Trigger code:
+
+trigger consumerTrigger on consumer__c (After insert) {
+    if(trigger.isAfter && trigger.isInsert) {
+        ConsumerRecord.sendEmailNotification(trigger.new);
+    }
+}
